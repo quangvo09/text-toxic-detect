@@ -1,7 +1,10 @@
 from profanity_check import predict, predict_prob
 
-print(predict(['đụ má']))
+print(predict(['nhucaidaubuoi']))
 # [1]
 
-predict(['xin chào'])
+print(predict(['xin chào']))
 # [0]
+
+print(predict(['dm']))
+# [1]
