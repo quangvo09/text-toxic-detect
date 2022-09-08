@@ -1,10 +1,16 @@
-from profanity_check import predict, predict_prob
+from flask import Flask
+from flask import request, jsonify
+from profanity_check import predict
 
-print(predict(['nhucaidaubuoi']))
-# [1]
+app = Flask(__name__)
 
-print(predict(['xin chào']))
-# [0]
+@app.route("/predict", methods=['POST'])
+def do_predict():
+    text = request.form['text']
+    [score] = predict([text])
+    return jsonify(
+        score=int(score)
+    )
 
-print(predict(['dm']))
-# [1]
+if __name__ == '__name__':
+    app.run('0.0.0.0')
