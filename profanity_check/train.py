@@ -4,9 +4,11 @@ from sklearn.calibration import CalibratedClassifierCV
 from sklearn.svm import LinearSVC
 import joblib
 
+from utils import pre_process_features
+
 # Read in data
 data = pd.read_csv('data/clean_data.csv')
-texts = data['text'].astype(str)
+texts = pre_process_features(data['text'].astype(str))
 y = data['is_offensive']
 
 # Vectorize the text
